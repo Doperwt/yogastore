@@ -1,4 +1,4 @@
-def initialize_yogastore
+def initialize_yogastore#starting the store and initializing all the variables
   @shopping_cart = []
   @products = [
     { reference_number: 1231, name: "Super Lite Mat", price: 10 },
@@ -13,8 +13,8 @@ def initialize_yogastore
   @price = 0
   puts "Hello user, welcome to the Yoga Store"
   list_products
-  loop do
-    print  "choose a product by its reference number or write end to complete : "
+  loop do #keeps looping the store until the customer quits
+    print  "choose a product by its reference number or write \'end\' to complete : "
     input = gets.chomp
     case input
     when  'end'
@@ -23,23 +23,23 @@ def initialize_yogastore
     else
       next if !check_zero(input)
       display_add_cart(input)
-    end 
+    end
   end
 end
 
-def check_zero(input)
+def check_zero(input)#checking for invalid inputs, so the code doesnt run through the entire inventory
   if input == "0"
-    puts "string 0"
+    print "0 is not a valid product in the store "
     return false
   elsif input.to_i == 0
-    puts "wrong string"
+    print "either select a product or type \'end\' to exit store "
     return false
   else
     return true
   end
 end
 
-def display_add_cart(input)
+def display_add_cart(input)#displaying whats in the cart before the next question is asked
   @products.each do |product|
     if product[:reference_number] == input.to_i
       @shopping_cart.push(product)
@@ -59,11 +59,11 @@ def display_cart #displaying the cart for the customer
   end
 end
 
-def list_products
+def list_products # generates a list of products to choose from
   @products.each do |product|
     puts "#{product[:reference_number]}: #{product[:name]} price is #{product[:price]}"
   end
 end
 
-initialize_yogastore
-p @shopping_cart
+initialize_yogastore #starting the program
+# p @shopping_cart #debugging
