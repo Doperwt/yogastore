@@ -21,11 +21,23 @@ def initialize_yogastore
       puts "Thanks for shopping at the Yogastore!!!"
       break
     else
+      next if !check_zero(input)
       display_add_cart(input)
-    end
+    end 
   end
 end
 
+def check_zero(input)
+  if input == "0"
+    puts "string 0"
+    return false
+  elsif input.to_i == 0
+    puts "wrong string"
+    return false
+  else
+    return true
+  end
+end
 
 def display_add_cart(input)
   @products.each do |product|
