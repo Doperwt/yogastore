@@ -9,3 +9,7 @@
   { reference_number: 1237, name: "Bring Yoga To Life", price: 30 },
   { reference_number: 1238, name: "Light On Yoga", price: 10 }
 ]
+puts "Hello user, welcome to the Yoga Store"
+@products.each do |product|
+  puts "#{product[:reference_number]}: #{product[:name]} price is #{product[:price]}"
+end
