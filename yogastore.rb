@@ -9,7 +9,26 @@
   { reference_number: 1237, name: "Bring Yoga To Life", price: 30 },
   { reference_number: 1238, name: "Light On Yoga", price: 10 }
 ]
+@price = 0
+def display_add_cart(input)
+  @products.each do |product|
+    if product[:reference_number] == input.to_i
+      @shopping_cart.push(product)
+      puts "#{input} was added to cart"
+      @price = @price + product[:price]
+      break
+    end
+  end
+  display_cart
+  puts "--------------------\ntotal : #{@price}"
+end
+def display_cart
+  @shopping_cart.each do |item|
+    puts "#{item[:name]}, price : #{item[:price]}"
+  end
+end
 puts "Hello user, welcome to the Yoga Store"
+
 @products.each do |product|
   puts "#{product[:reference_number]}: #{product[:name]} price is #{product[:price]}"
 end
@@ -23,13 +42,7 @@ loop do
     puts "you entered nothing"
     break
   else
-    @products.each do |product|
-      if product[:reference_number] == input.to_i
-        @shopping_cart.push(product)
-        puts "#{input} was added to cart"
-        break
-      end
-    end
+    display_add_cart(input)
   end
 end
 p @shopping_cart
