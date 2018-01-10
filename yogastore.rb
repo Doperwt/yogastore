@@ -13,3 +13,23 @@ puts "Hello user, welcome to the Yoga Store"
 @products.each do |product|
   puts "#{product[:reference_number]}: #{product[:name]} price is #{product[:price]}"
 end
+loop do
+  print  "choose a product by its reference number or write end to complete : "
+
+  input = gets.chomp
+
+  case input
+  when  'end'
+    puts "you entered nothing"
+    break
+  else
+    @products.each do |product|
+      if product[:reference_number] == input.to_i
+        @shopping_cart.push(product)
+        puts "#{input} was added to cart"
+        break
+      end
+    end
+  end
+end
+p @shopping_cart
